@@ -176,6 +176,7 @@ If you are getting errors like `llama:streaming - could not stream chat. Error: 
 - `cd ..`
 - `export IMAGETAG=anything-llm:X.Y.Z` (see the correct label and version for the image)
 - `docker build -f ./docker/Dockerfile -t harbor.staging-adalab.adamatics.io/apps_temp/$IMAGETAG --build-arg ARG_UID=1000 --build-arg ARG_GID=1000 .`
+- (alternatively, use the following docker command to make sure the individual FROM steps are all run: `docker build -f ./docker/Dockerfile -t harbor.staging-adalab.adamatics.io/apps_temp/$IMAGETAG --build-arg ARG_UID=1000 --build-arg ARG_GID=1000  --skip-unused-stages=false .`)
 - `docker push harbor.staging-adalab.adamatics.io/apps_temp/$IMAGETAG`
 - Go to the `Container Images` tab in `AdaLab` and publish the new image from **registry**
 - Go to `App Deployment` and deploy the app with the following options:
